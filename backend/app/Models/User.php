@@ -29,4 +29,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Dans app/Models/User.php
+public function ecole()
+{
+    return $this->belongsTo(Ecole::class);
+}
+
+public function enseignantClassesMatieres()
+{
+    return $this->hasMany(EnseignantClasseMatiere::class, 'user_id');
+}
 }
