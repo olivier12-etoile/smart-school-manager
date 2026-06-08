@@ -1,0 +1,11 @@
+{
+  "folders": [
+    { "path": "." },
+    { "path": "backend" },
+    { "path": "frontend/ssm_app" }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "dart.flutterSdkPath": "C:\\flutter"   // ← adapte selon ton chemin Flutter
+  }
+}
