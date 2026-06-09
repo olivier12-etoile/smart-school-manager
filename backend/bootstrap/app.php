@@ -15,6 +15,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+
+    $middleware->alias([
+        'role' => \App\Http\Middleware\CheckRole::class,
+    ]);
         // C'est ici que la magie opère pour Laravel 12
 
         // 1. Pour ajouter le middleware à TOUTES les requêtes API (notre cas)
@@ -29,3 +33,4 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         // ...
     })->create();
+    

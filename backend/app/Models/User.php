@@ -41,4 +41,9 @@ public function enseignantClassesMatieres()
 {
     return $this->hasMany(EnseignantClasseMatiere::class, 'user_id');
 }
+
+public function modulePermissions()
+{
+    return $this->hasMany(UserModulePermission::class);
+}
 }

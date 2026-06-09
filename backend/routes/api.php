@@ -12,3 +12,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/sync/push', [SyncController::class, 'push']);
     Route::get('/sync/pull', [SyncController::class, 'pull']);
 });
+
+Route::middleware('auth:sanctum')->group(function () {
+    // Gestion des utilisateurs (réservé au directeur)
+    Route::get('/users', [App\Http\Controllers\Api\UserManagementController::class, 'index']);
+    Route::post('/users', [App\Http\Controllers\Api\UserManagementController::class, 'store']);
+    Route::put('/users/{id}/role', [App\Http\Controllers\Api\UserManagementController::class, 'updateRole']);
+    Route::put('/users/{id}/modules', [App\Http\Controllers\Api\UserManagementController::class, 'updateModules']);
+});
+
+Route::middleware(['auth:sanctum', 'role:directeur'])->group(function () {
+    Route::get('/users', [UserManagementController::class, 'index']);
+    Route::post('/users', [UserManagementController::class, 'store']);
+    Route::put('/users/{id}/role', [UserManagementController::class, 'updateRole']);
+    Route::put('/users/{id}/modules', [UserManagementController::class, 'updateModules']);
+});
